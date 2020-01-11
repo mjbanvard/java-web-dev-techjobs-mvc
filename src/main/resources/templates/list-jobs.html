@@ -11,6 +11,21 @@
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
     <!-- TODO #1 - Use a loop to display job results in a table. -->
+    <!-- Thymeleaf syntax to create table, using a loop from Arraylist of Objects! -->
+    <table class="job-listing">
+        <!--<ul>-->
+            <th:block th:each="job : ${jobs}">
+                <li>ID: </li>
+                <li th:text="${job.getId()}"></li>
+                <li th:text="${job.getName()}"></li>
+                <li th:text="${job.getEmployer()}"></li>
+                <li th:text="${job.getLocation()}"></li>
+                <li th:text="${job.getPositionType()}"></li>
+                <li th:text="${job.getCoreCompetency()}"></li>
+                <li></li>
+            </th:block>
+        <!--</ul>-->
+    </table>
 
 </div>
 
