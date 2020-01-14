@@ -27,5 +27,37 @@
         </div>
     </div>
 
+    <div th:fragment="list-selection" class="joblist">
+        <th:block th:each="job : ${jobs}">
+            <table class="job-listing"> <!--style="margin-top: 20px; margin-bottom: 20px"-->
+                <tr>
+                    <h3><td style="text-align: center">ID: </td></h3>
+                    <td th:text="${job.getId()}">ID: </td>
+                </tr>
+                <tr>
+                    <td style="text-align: center">Name: </td>
+                    <td th:text="${job.getName()}"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center">Employer: </td>
+                    <td th:text="${job.getEmployer()}"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center">Location: </td>
+                    <td th:text="${job.getLocation()}"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center">Position: </td>
+                    <td th:text="${job.getPositionType()}"></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center">Skill: </td>
+                    <td th:text="${job.getCoreCompetency()}"></td>
+                </tr>
+            </table>
+            <p></p>
+        </th:block>
+    </div>
+
 </body>
 </html>

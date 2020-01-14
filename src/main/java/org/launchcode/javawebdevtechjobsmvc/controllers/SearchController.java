@@ -26,16 +26,22 @@ public class SearchController {
     // TODO #3 - Create a handler to process a search request and render the updated search view.
     // <form th:action="@{/search/results}" method = "post">
 
-    @RequestMapping(value = "search")
-    public ArrayList<Job> displaySearchResults(Model model, String searchType, String searchTerm) {
-        if (searchTerm == "all" || searchTerm == "") {
-            ArrayList<Job> jobs = JobData.findAll();
-            return jobs;
+    @PostMapping(value = "results")
+    public String displaySearchResults(Model model, String searchType, String searchTerm) {
+        ArrayList<Job> jobs;
+        if (searchType.equals("all")) {
+            model.addAttribute("columns", columnChoices);
+            jobs = JobData.findByValue(searchTerm);
+
         } else {
-            ArrayList<Job> jobs = JobData.findByColumnAndValue(searchType, searchTerm);
-            return jobs;
+            model.addAttribute("columns", columnChoices);
+            jobs = JobData.findByColumnAndValue(searchType, searchTerm);
+
         }
-        search(Model model)
+        model.addAttribute("jobs", jobs);
+
+        return "search";
+        // search(Model model)
     }
 
 }
